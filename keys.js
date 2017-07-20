@@ -1,3 +1,6 @@
+// log
+console.log("Keys have loaded successfully");
+
 // twitter keys
 exports.twitterKeys = {
   consumer_key: 'EnSGvxwrBmXNaHttEwffKPQG1',

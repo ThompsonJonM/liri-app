@@ -5,17 +5,9 @@ var fileSystem = require("fs");
 var request = require("request");
 
 // keys
-var client = new Twitter({
-    consumer_key: keys.twitterKeys.consumer_key,
-    consumer_secret: keys.twitterKeys.consumer_secret,
-    access_token_key: keys.twitterKeys.access_token_key,
-    access_token_secret: keys.twitterKeys.access_token_secret
-});
+var client = new Twitter(keys.twitterKeys);
 
-var spotify = new Spotify({
-    id: keys.spotifyKeys.clientId_key,
-    secret: keys.spotifyKeys.clientSecret_key
-});
+var spotify = new Spotify(keys.spotifyKeys);
 
 // omdb
 var omdbURL = "http://www.omdbapi.com/?apikey=40e9cece&t=";
@@ -24,3 +16,17 @@ var omdbURL = "http://www.omdbapi.com/?apikey=40e9cece&t=";
 var inputOne = process.argv[2];
 var inputTwo = process.argv[3];
 
+// switchboard
+switch (action) {
+    case "myTweets":
+        myTweets();
+        break;
+
+    case "spotify":
+        spotifyThis(value);
+        break;
+        
+    case "omdb":
+        omdbThis(value);
+        break;
+}

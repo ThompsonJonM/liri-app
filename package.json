@@ -1,0 +1,20 @@
+{
+  "name": "liri-app",
+  "version": "1.0.0",
+  "description": "LIRI is a command line node.js application which takes in user parameters and provides data.",
+  "main": "keys.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThompsonJonM/liri-app.git"
+  },
+  "keywords": [],
+  "author": "Jonathan Thompson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThompsonJonM/liri-app/issues"
+  },
+  "homepage": "https://github.com/ThompsonJonM/liri-app#readme"
+}

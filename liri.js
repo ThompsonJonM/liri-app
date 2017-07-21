@@ -27,16 +27,18 @@ var omdbURL = "http://www.omdbapi.com/?apikey=40e9cece&t=";
 
 // spotify
 function spotifyMe(){
-        spotify.search({ type: 'track', query: userInput2}, function(err, data) {
+        spotify.search({ type: 'track', query: inputTwo}, function(err, data) {
             if (err) {
                 return console.log('Error occurred: ' + err);
             } 
             for (var i = 0; i < 6; i++) {
+                console.log("\n--------------------------------------------------------");
                 console.log("Artist(s):" + ' ' + data.tracks.items[i].artists[0].name);
                 console.log("Song Name:" + ' ' + data.tracks.items[i].name);
                 console.log("Spotify Link:" + ' ' + data.tracks.items[i].preview_url);
                 console.log("Album:" + ' ' + data.tracks.items[i].album.name);
-                console.log("\n")       
+                console.log("\n--------------------------------------------------------");
+                console.log("\n");
             }
         });
 }
@@ -44,6 +46,7 @@ function spotifyMe(){
 // omdb
 function omdbMe(body) {
     var omdbBody = JSON.parse(body);
+    console.log("\n--------------------------------------------------------");
     console.log('Title:' + ' ' +omdbBody.Title);
     console.log('Year:' + ' ' +omdbBody.Year);
     // must fix
@@ -53,10 +56,12 @@ function omdbMe(body) {
     console.log('Language:' + ' ' +omdbBody.Language);
     console.log('Plot:' + ' ' +omdbBody.Plot);
     console.log('Actors:' + ' ' +omdbBody.Actors)
+    console.log("\n--------------------------------------------------------");
+    console.log("\n");
 }
 
 if (!inputOne){
-    console.log("You didn't type anything after 'node liri.js' !");
+    console.log("LIRI requires a function input to operate.");
     return;
 }
 
@@ -64,12 +69,15 @@ switch(inputOne) {
   
     case 'tweetMe':
         if(inputOne && inputTwo){
-            console.log("Please do not enter data after 'my-tweets' on the command line.  Please try the command again.");
+            console.log("Please do not enter a parameter after tweetMe.");
             return;
         }
         client.get('https://api.twitter.com/1.1/statuses/user_timeline.json', function(error, tweets, response) {
             tweets.forEach(function(element) {
-            console.log(element.created_at + '     ' +  element.text);        
+            console.log("\n--------------------------------------------------------");
+            console.log(element.created_at + '     ' +  element.text);
+            console.log("\n--------------------------------------------------------");
+            console.log("\n");
         });
     });
     break;
@@ -80,10 +88,13 @@ switch(inputOne) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
+        console.log("\n--------------------------------------------------------");
         console.log("Artist(s):" + ' ' + data.tracks.items[0].album.artists[0].name);
         console.log("Song Name:" + ' ' + data.tracks.items[0].name);
         console.log("Spotify Link:" + ' ' + data.tracks.items[0].preview_url);
         console.log("Album:" + ' ' + data.tracks.items[0].album.name);
+        console.log("\n--------------------------------------------------------");
+        console.log("\n");
         });
         return;
         }
@@ -104,10 +115,16 @@ switch(inputOne) {
         break;
     
     case 'do-what-it-says':
-        fs.readFile('./random.txt','utf8', function(err, data){
-            var randomArr = data.split(',');
-            userInput2 = randomArr[1];
-            spotifyMe();
-        });
+        fileSystem.readFile('./random.txt','utf8', function(err, data){
+            var dataArr = data.split(',');
+            inputTwo = dataArr[1];
+            
+            if (dataArr[0] === "spotifyMe") {
+                spotifyMe(dataArr[1]);
+            } else if (dataArr[0] === "omdbMe") {
+                omdbMe(dataArr[1]);
+            }
+        }); 
+
         break;
 }

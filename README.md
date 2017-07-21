@@ -16,7 +16,7 @@ LIRI comes with four parameters out of the box. They are:
 * spotifyMe
 * omdbMe
 * tweetMe
-* random
+* do-what-it-says
 
 # Using LIRI
 
@@ -29,3 +29,5 @@ LIRI functions by using a simple set of commands. Each command will appear as th
     + Twitter: node liri tweetMe 
         * This is the only node command which will not require a parameter input
         * Please make sure not to write anything after "tweetMe"
+    + do-what-it-says: node liri do-what-it-says
+        * This command will take input from the random.txt file found within the repository and output data based on the input.

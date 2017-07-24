@@ -1,0 +1,15 @@
+// logs go here
+
+D:\Program Files\node.exe
+D:\Code\Repositories\liri-app\liri
+spotify-this-song
+digital+sea
+
+D:\Program Files\node.exe
+D:\Code\Repositories\liri-app\liri
+movie-this
+the+guardian
+
+D:\Program Files\node.exe
+D:\Code\Repositories\liri-app\liri
+my-tweets
